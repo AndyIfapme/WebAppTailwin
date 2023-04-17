@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 using WebAppTailwin.Infrastucture;
 
 namespace WebAppTailwin.Host
@@ -16,7 +17,7 @@ namespace WebAppTailwin.Host
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddRazorPages();
 
@@ -44,6 +45,25 @@ namespace WebAppTailwin.Host
             app.MapRazorPages();
 
             app.Run();
+        }
+
+        [Conditional("RESETDB")]
+        static void ResetDatabase(IServiceProvider serviceProvider)
+        {
+            using var scope = serviceProvider.CreateScope();
+            var services = scope.ServiceProvider;
+
+            try
+            {
+                var dbContext = services.GetRequiredService<ApplicationDbContext>();
+                DbInitializer.Initialize(dbContext);
+            }
+            catch (Exception ex)
+            {
+                var logger = services.GetRequiredService<ILogger<Program>>();
+
+                logger.LogError(ex, "An error occurred while seeding the database.");
+            }
         }
     }
 }
