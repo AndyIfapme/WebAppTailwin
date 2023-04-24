@@ -1,6 +1,8 @@
-﻿namespace WebAppTailwin.Domain.Vinyls;
+﻿using WebAppTailwin.Domain.Common;
 
-public class Artist
+namespace WebAppTailwin.Domain.Vinyls;
+
+public class Artist : Entity
 {
     public string FullName { get; set; } = default!;
     public string? Description { get; set; }

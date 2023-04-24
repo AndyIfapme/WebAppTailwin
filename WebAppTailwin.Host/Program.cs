@@ -22,6 +22,7 @@ namespace WebAppTailwin.Host
             builder.Services.AddRazorPages();
 
             var app = builder.Build();
+            ResetDatabase(app.Services);
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

@@ -7,6 +7,10 @@
     <UserSecretsId>aspnet-WebAppTailwin.Host-2e0f527d-6e65-4fbf-9ebb-e667d9fc006d</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants);RESETDB</DefineConstants>
+  </PropertyGroup>
+
 	<ItemGroup>
 		<UpToDateCheckBuilt Include="wwwroot/css/site.css" Set="Css" />
 		<UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
