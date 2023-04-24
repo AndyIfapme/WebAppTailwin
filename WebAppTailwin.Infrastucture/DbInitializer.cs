@@ -28,6 +28,22 @@ public static class DbInitializer
                 }
             });
 
+        context.Set<Vinyl>().Add(new Vinyl
+        {
+            Title = "If I Could Only Remember My Name",
+            Description = "Album - 50th Anniversary",
+            Price = 27.00,
+            Type = TypeEnum.Size33,
+            DurationInSeconds = 1200,
+            ReleaseDate = new DateTime(1971, 02,22),
+            IsAlbum = true,
+            PublishingHouse = "Atlantic Records",
+            Artist = new Artist
+            {
+                FullName = "David Crosby"
+            }
+        });
+
         context.SaveChanges();
     }
 }
