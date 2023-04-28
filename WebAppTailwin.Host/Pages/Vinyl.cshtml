@@ -1,0 +1,13 @@
+﻿@page "{id:Guid}"
+@model WebAppTailwin.Host.Pages.VinylModel
+@{
+}
+
+@if (Model.Vinyl is not null) //Model.Vinyl != null
+{
+    <h1>@Model.Vinyl.Title</h1>
+}
+else
+{
+    <p>Désolé, l'article n'est plus disponible.</p>
+}

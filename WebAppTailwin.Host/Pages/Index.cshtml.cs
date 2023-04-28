@@ -22,6 +22,7 @@ namespace WebAppTailwin.Host.Pages
                 .Set<Vinyl>()
                 .Select(vinyl => new VinylView
                 {
+                    VinylId = vinyl.Id,
                     Title = vinyl.Title,
                     Price = vinyl.Price,
                     Type = vinyl.Type,
@@ -38,6 +39,8 @@ namespace WebAppTailwin.Host.Pages
          */
         public class VinylView
         {
+            public Guid VinylId { get; set; }
+
             public string Title { get; set; } = default!;
             public double Price { get; set; }
             public TypeEnum Type { get; set; }
