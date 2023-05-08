@@ -38,6 +38,7 @@ public static class DbInitializer
                 IsAlbum = true,
                 Type = TypeEnum.Size33,
                 Price = 25.00,
+                ImageUrl = "/vinyls/vinyl-1.webp",
                 Artist = new Artist
                 {
                     FullName = "The Sonics",

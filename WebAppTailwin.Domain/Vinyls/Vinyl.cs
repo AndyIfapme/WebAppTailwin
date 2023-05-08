@@ -14,6 +14,8 @@ namespace WebAppTailwin.Domain.Vinyls
         public Guid ArtistId { get; set; }
 
         public TypeEnum Type { get; set; }
+
+        public string? ImageUrl { get; set; }
         
 
         public double Price { get; set; }

@@ -9,5 +9,5 @@ public class Artist : Entity
 
     public string? Nationality { get; set; }
 
-    public ICollection<Vinyl> Vinyls { get; set; }
+    public ICollection<Vinyl>? Vinyls { get; set; }
 }

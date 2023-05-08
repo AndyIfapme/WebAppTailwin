@@ -1,11 +1,26 @@
 ﻿@page "{id:Guid}"
 @model WebAppTailwin.Host.Pages.VinylModel
 @{
+    var defaultImage = "/vinyls/default-image.png";
+    
+    var imageUrl = Model.Vinyl?.ImageUrl ?? defaultImage;
+    var imgAlt = $"Image du vinyl de {Model.Vinyl!.Title}";
+    //if (Model.Vinyl?.ImageUrl is null)
+    //{
+    //    imageUrl = defaultImage;
+    //}
+    //else
+    //{
+    //    imageUrl = Model.Vinyl.ImageUrl;
+    //}
+
+    //imageUrl = Model.Vinyl?.ImageUrl is null ? defaultImage : Model.Vinyl.ImageUrl;
 }
 
 @if (Model.Vinyl is not null) //Model.Vinyl != null
 {
     <h1>@Model.Vinyl.Title</h1>
+    <img src="@imageUrl" loading="lazy" alt="@imgAlt">
 }
 else
 {

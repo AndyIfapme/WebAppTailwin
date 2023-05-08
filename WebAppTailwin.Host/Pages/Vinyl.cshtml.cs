@@ -17,12 +17,13 @@ namespace WebAppTailwin.Host.Pages
 
         public void OnGet(Guid id)
         {
-            Vinyl = _context.Set<Vinyl>()
+            Vinyl = _context.Vinyl
                 .Where(x => x.Id == id)
                 .Select(vinyl => new VinylView
                 {
                     Title = vinyl.Title,
                     Description = vinyl.Description,
+                    ImageUrl = vinyl.ImageUrl,
                     PublishingHouse = vinyl.PublishingHouse,
                     DurationInSeconds = vinyl.DurationInSeconds,
                     ReleaseDate = vinyl.ReleaseDate,
@@ -39,8 +40,12 @@ namespace WebAppTailwin.Host.Pages
         {
             public string Title { get; set; } = default!;
             public string? Description { get; set; }
+            public string? ImageUrl { get; set; }
+
+
             public string PublishingHouse { get; set; } = default!;
             public int DurationInSeconds { get; set; }
+
             public DateTime ReleaseDate { get; set; }
             public TypeEnum Type { get; set; }
             public bool IsAlbum { get; set; }
