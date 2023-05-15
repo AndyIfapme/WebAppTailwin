@@ -18,6 +18,11 @@ namespace WebAppTailwin.Infrastucture.Configurations
              * de manière unique chaque enregistrement dans une table de la base de données.
              */
             builder.HasKey(x => x.Id);
+
+            //builder.HasOne(x => x.Artist)
+            //    .WithMany(x => x.Vinyls)
+            //    .HasForeignKey(x => x.ArtistId)
+            //    .IsRequired();
         }
     }
 }

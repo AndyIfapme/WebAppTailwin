@@ -100,7 +100,6 @@ namespace WebAppTailwin.Host.Areas.Identity.Pages.Account.Manage
             {
                 return Page();
             }
-
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {

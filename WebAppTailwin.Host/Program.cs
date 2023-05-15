@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using WebAppTailwin.Domain.Users;
 using WebAppTailwin.Infrastucture;
 
 namespace WebAppTailwin.Host
@@ -19,8 +20,12 @@ namespace WebAppTailwin.Host
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            builder.Services.AddDefaultIdentity<User>(options =>
+                {
+                    options.SignIn.RequireConfirmedAccount = false;
+                })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             builder.Services.AddRazorPages();
 
             var app = builder.Build();

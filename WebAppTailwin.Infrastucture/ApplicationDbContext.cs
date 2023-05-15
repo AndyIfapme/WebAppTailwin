@@ -1,13 +1,15 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WebAppTailwin.Domain.Users;
 using WebAppTailwin.Domain.Vinyls;
 
 namespace WebAppTailwin.Infrastucture
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public DbSet<Vinyl> Vinyl { get; set; }
         public DbSet<Artist> Artist { get; set; }
+        public DbSet<InvoiceAddress> InvoiceAddresses { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
