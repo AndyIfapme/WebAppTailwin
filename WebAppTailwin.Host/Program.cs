@@ -76,8 +76,8 @@ namespace WebAppTailwin.Host
 
             try
             {
-                var dbContext = services.GetRequiredService<ApplicationDbContext>();
-                DbInitializer.Initialize(dbContext);
+                //var dbContext = services.GetRequiredService<ApplicationDbContext>();
+                //DbInitializer.Initialize(dbContext);
             }
             catch (Exception ex)
             {

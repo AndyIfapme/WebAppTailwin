@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebAppTailwin.Domain.Users;
 using WebAppTailwin.Domain.Vinyls;
 
 namespace WebAppTailwin.Infrastucture;

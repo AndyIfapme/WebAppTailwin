@@ -5,6 +5,9 @@ using WebAppTailwin.Domain.Vinyls;
 
 namespace WebAppTailwin.Infrastucture
 {
+    //https://learn.microsoft.com/en-us/ef/core/cli/dotnet#installing-the-tools
+    //dotnet ef migrations add "VinylArtist" -s "WebAppTailwin.Host/WebAppTailwin.Host.csproj" -p "WebAppTailwin.Infrastucture" -o "Migrations" -c ApplicationDbContext
+    //dotnet ef migrations script --idempotent -o "WebAppTailwin.Infrastucture/Scripts/idempotent.sql" -s "WebAppTailwin.Host/WebAppTailwin.Host.csproj" -p WebAppTailwin.Infrastucture -c ApplicationDbContext
     public class ApplicationDbContext : IdentityDbContext<User>
     {
         public DbSet<Vinyl> Vinyl { get; set; }
@@ -14,6 +17,7 @@ namespace WebAppTailwin.Infrastucture
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+
         }
 
         //https://learn.microsoft.com/en-us/ef/core/cli/dbcontext-creation?tabs=dotnet-core-cli

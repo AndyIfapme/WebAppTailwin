@@ -13,6 +13,6 @@ public class InvoiceAddressConfiguration : IEntityTypeConfiguration<InvoiceAddre
         builder.HasOne(x => x.User)
             .WithOne(x => x.InvoiceAddress)
             .HasForeignKey<InvoiceAddress>(x => x.UserId)
-            .IsRequired(false);
+            .IsRequired();
     }
 }

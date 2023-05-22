@@ -16,4 +16,8 @@
     <ProjectReference Include="..\WebAppTailwin.Domain\WebAppTailwin.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+
 </Project>
