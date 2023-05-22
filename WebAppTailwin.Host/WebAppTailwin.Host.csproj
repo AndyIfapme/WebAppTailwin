@@ -33,10 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebAppTailwin.Application\WebAppTailwin.Application.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Data\Migrations\" />
     <Folder Include="Models\" />
@@ -49,6 +45,10 @@
     <Folder Include="wwwroot\lib\jquery-validation\dist\" />
     <Folder Include="wwwroot\lib\jquery\" />
     <Folder Include="wwwroot\lib\jquery\dist\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebAppTailwin.Infrastucture\WebAppTailwin.Infrastucture.csproj" />
   </ItemGroup>
 
 </Project>
