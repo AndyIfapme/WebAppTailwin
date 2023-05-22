@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using Microsoft.OpenApi.Models;
 using WebAppTailwin.Domain.Users;
 using WebAppTailwin.Infrastucture;
 
@@ -18,7 +19,15 @@ namespace WebAppTailwin.Host
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
+            builder.Services.AddControllers();
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+            builder.Services.AddMvc();
+
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
 
             builder.Services.AddDefaultIdentity<User>(options =>
                 {
@@ -48,8 +57,12 @@ namespace WebAppTailwin.Host
 
             app.UseRouting();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("v1/swagger.json", "My API V1"));
+
             app.UseAuthorization();
 
+            app.MapControllers();
             app.MapRazorPages();
 
             app.Run();
