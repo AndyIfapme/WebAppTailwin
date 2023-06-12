@@ -46,6 +46,15 @@ namespace WebAppTailwin.Infrastucture
              */
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
+            builder.Entity<Artist>(a =>
+            {
+                a.HasKey(x => x.Id);
+                a.HasMany(x => x.Vinyls)
+                    .WithOne(x => x.Artist)
+                    .HasForeignKey(x => x.ArtistId)
+                    .IsRequired();
+            });
+
 
             /*
              * Le code ci-dessous est une alternative à 'ApplyConfigurationsFromAssembly'

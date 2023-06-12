@@ -33,6 +33,7 @@ namespace WebAppTailwin.Host
                 {
                     options.SignIn.RequireConfirmedAccount = false;
                 })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddRazorPages();
@@ -76,8 +77,11 @@ namespace WebAppTailwin.Host
 
             try
             {
-                //var dbContext = services.GetRequiredService<ApplicationDbContext>();
-                //DbInitializer.Initialize(dbContext);
+                var dbContext = services.GetRequiredService<ApplicationDbContext>();
+                var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                var userManager = services.GetRequiredService<UserManager<User>>();
+
+                DbInitializer.Initialize(dbContext, userManager, roleManager);
             }
             catch (Exception ex)
             {

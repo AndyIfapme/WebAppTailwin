@@ -19,10 +19,10 @@ namespace WebAppTailwin.Infrastucture.Configurations
              */
             builder.HasKey(x => x.Id);
 
-            //builder.HasOne(x => x.Artist)
-            //    .WithMany(x => x.Vinyls)
-            //    .HasForeignKey(x => x.ArtistId)
-            //    .IsRequired();
+            builder.HasOne(x => x.Artist)
+                .WithMany(x => x.Vinyls)
+                .HasForeignKey(x => x.ArtistId)
+                .IsRequired();
         }
     }
 }

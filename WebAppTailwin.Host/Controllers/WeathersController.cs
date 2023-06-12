@@ -26,5 +26,17 @@ namespace WebAppTailwin.Host.Controllers
                 Temperature = getWeatherResult.main.temp
             });
         }
+
+        //public IActionResult GetSync([FromQuery] double lat, [FromQuery] double lon)
+        //{
+        //    var weatherApi = RestService.For<IWeatherApi>("https://api.openweathermap.org");
+        //    var getWeatherResult = weatherApi.GetWeather(_configuration["ApiKey"]!, lat, lon)
+        //        .GetAwaiter().GetResult();
+
+        //    return Ok(new GetWeatherResult
+        //    {
+        //        Temperature = getWeatherResult.main.temp
+        //    });
+        //}
     }
 }

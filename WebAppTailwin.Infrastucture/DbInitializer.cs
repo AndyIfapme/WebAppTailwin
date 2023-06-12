@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using WebAppTailwin.Domain.Users;
 using WebAppTailwin.Domain.Vinyls;
 
 namespace WebAppTailwin.Infrastucture;
 
 public static class DbInitializer
 {
-    public static void Initialize(DbContext context)
+    public static void Initialize(DbContext context, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
     {
         /*
          * La méthode EnsureDeleted() est une méthode fournie par Entity Framework Core
@@ -61,6 +63,22 @@ public static class DbInitializer
                 FullName = "David Crosby"
             }
         });
+
+        var role = new IdentityRole("Admin");
+        var user = new User { UserName = "admin@admin.be", Email = "admin@admin.be" };
+
+        roleManager.CreateAsync(role)
+            .GetAwaiter()
+            .GetResult();
+        
+        userManager.CreateAsync(user, "Azerty123!")
+            .GetAwaiter()
+            .GetResult();
+
+        userManager.AddToRoleAsync(user, "Admin")
+            .GetAwaiter()
+            .GetResult();
+
 
         /*
         * La méthode SaveChanges() est une méthode fournie par Entity Framework Core
