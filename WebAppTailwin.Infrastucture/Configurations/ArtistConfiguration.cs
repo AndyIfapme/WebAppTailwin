@@ -31,8 +31,8 @@ public class ArtistConfiguration : IEntityTypeConfiguration<Artist>
          *
          * Enfin, la méthode IsRequired() spécifie que la clé étrangère ArtistId est requise, ce qui signifie qu'une entité Vinyl ne peut pas exister sans être liée à une entité Artist.
          */
-        builder.HasMany(x => x.Vinyls)
-            .WithOne(x => x.Artist)
+        builder.HasMany(artist => artist.Vinyls)
+            .WithOne(vinyl => vinyl.Artist)
             .HasForeignKey(x => x.ArtistId)
             .IsRequired();
     }
